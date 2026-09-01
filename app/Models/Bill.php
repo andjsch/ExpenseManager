@@ -2,30 +2,24 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Guarded;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+#[Guarded]
 class Bill extends Model
 {
-    protected $fillable = [
-        'description',
-        'date',
-        'amount',
-        'type',
-        'guarantee',
-    ];
+    protected function casts(): array {
+        return [
+            'guarantee' => 'bool',
+            'date' => 'date',
+            'created_at' => 'timestamp',
+            'updated_at' => 'timestamp',
+        ];
+    }
 
-    protected $dates = [
-        'date',
-        'created_at',
-        'updated_at'
-    ];
-
-    protected $attributes = [
-        'guarantee' => false
-    ];
-
-    public function typeO()
+    public function expenseType(): BelongsTo
     {
-        return $this->hasOne(ExpenseType::class, 'id', 'type');
+        return $this->belongsTo(ExpenseType::class);
     }
 }
