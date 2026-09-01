@@ -1,4 +1,9 @@
-<p align="center"><img src="public/images/logo.svg"></p>
+<p align="center">
+   <picture>
+       <source srcset="/public/resources/logo_dark.svg" media="(prefers-color-scheme: dark)">
+       <img align="center" width="350" alt="Logo" src="/public/resources/logo.svg">
+   </picture>
+</p>
 
 ## Expense Manager
 The Expense Manager is a web application that should give you a simple way to track all of your expenses. Mostly every
