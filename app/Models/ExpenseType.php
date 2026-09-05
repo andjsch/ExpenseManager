@@ -3,16 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Guarded;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Guarded([])]
 class ExpenseType extends Model
 {
-    public function total($month, $year)
+
+    public function bills(): HasMany
     {
-        if($month != 0)
-            return Bill::where('type', $this->id)->whereMonth('date', '=', $month)->whereYear('date', '=', $year)->sum('amount');
-        else
-            return Bill::where('type', $this->id)->whereYear('date', '=', $year)->sum('amount');
+        return $this->hasMany(Bill::class);
+    }
+
+    public function total(?int $month, int $year)
+    {
+        return $this->bills()
+            ->when($month !== null, fn (Builder $query) => $query->whereMonth('date', '=', $month))
+            ->whereYear('date', '=', $year)
+            ->sum('amount');
     }
 }
