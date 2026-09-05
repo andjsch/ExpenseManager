@@ -16,6 +16,7 @@ return [
     'expense_info_created'          => 'The expense from :date (:desc) has been created succesfully.',
     'expense_info_updated'          => 'The expense from :date (:desc) has been updated succesfully.',
     'expense_info_deleted'          => 'The expense from :date (:desc) has been deleted succesfully.',
+    'type_delete_constraint_error'  => 'The type cannot be deleted because it is in use.',
 
     'users'                         => 'Users',
     'username'                      => 'Username',

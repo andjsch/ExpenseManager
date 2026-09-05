@@ -5,16 +5,19 @@ namespace App\Filament\Resources\ExpenseTypes;
 use App\Filament\Resources\ExpenseTypes\Pages\ManageExpenseTypes;
 use App\Models\ExpenseType;
 use BackedEnum;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\QueryException;
 
 class ExpenseTypeResource extends Resource
 {
@@ -67,7 +70,19 @@ class ExpenseTypeResource extends Resource
             ])
             ->recordActions([
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()
+                    ->action(function (ExpenseType $record, Action $action): void {
+                        try {
+                            $record->delete();
+                        } catch (QueryException $e) {
+                            $action->failure();
+
+                            Notification::make()
+                                ->title(__('app.type_delete_constraint_error'))
+                                ->danger()
+                                ->send();
+                        }
+                    }),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

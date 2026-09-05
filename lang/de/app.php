@@ -16,6 +16,7 @@ return [
     'expense_info_created'          => 'Die Ausgabe vom :date (:desc) wurde erfolgreich erstellt.',
     'expense_info_updated'          => 'Die Ausgabe vom :date (:desc) wurde erfolgreich aktualisiert.',
     'expense_info_deleted'          => 'Die Ausgabe vom :date (:desc) wurde erfolgreich entfernt.',
+    'type_delete_constraint_error'  => 'Der Ausgabetyp kann nicht gelöscht werden, da er in Benutzung ist.',
 
     'users'                         => 'Benutzer',
     'username'                      => 'Benutzername',
