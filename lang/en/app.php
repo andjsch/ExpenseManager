@@ -35,16 +35,6 @@ return [
     'user_info_passmismatch'        => 'Passwords don\'t match.',
 
     'navigation_settings'           => 'Settings',
-    'navigation_logout'             => 'Logout',
-    'login_action'                  => 'Login',
-    'login_keep_logged_in'          => 'Keep me logged in',
-    'login'                         => 'Login',
 
     'installer_exp_type_general'    => 'General',
-
-    'misc_create'                   => 'Create',
-    'misc_add'                      => 'Add',
-    'misc_update'                   => 'Update',
-    'misc_delete'                   => 'Delete',
-    'misc_show'                     => 'Show',
 ];

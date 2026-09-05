@@ -35,16 +35,6 @@ return [
     'user_info_passmismatch'        => 'Die Passwörter stimmen nicht überein.',
 
     'navigation_settings'           => 'Einstellungen',
-    'navigation_logout'             => 'Logout',
-    'login_action'                  => 'Login',
-    'login_keep_logged_in'          => 'Eingeloggt bleiben',
-    'login'                         => 'Login',
 
     'installer_exp_type_general'    => 'Allgemein',
-
-    'misc_create'                   => 'Erstellen',
-    'misc_add'                      => 'Hinzufügen',
-    'misc_update'                   => 'Aktualisieren',
-    'misc_delete'                   => 'Löschen',
-    'misc_show'                     => 'Anzeigen',
 ];
