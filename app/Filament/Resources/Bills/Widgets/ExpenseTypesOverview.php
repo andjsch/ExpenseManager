@@ -3,17 +3,12 @@
 namespace App\Filament\Resources\Bills\Widgets;
 
 use App\Models\ExpenseType;
-use Filament\Actions\BulkActionGroup;
-use Filament\Pages\Concerns\ExposesTableToWidgets;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
-use Filament\Widgets\Concerns\InteractsWithPageTable;
 use Filament\Widgets\TableWidget;
-use Filament\Widgets\Widget;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\On;
-use Livewire\Component;
 
 class ExpenseTypesOverview extends TableWidget
 {
@@ -31,7 +26,8 @@ class ExpenseTypesOverview extends TableWidget
                     ->alignEnd()
                     ->money('EUR')
             ])
-            ->paginationPageOptions([])
+            ->recordClasses(['row-py-sm'])
+            ->paginated(false)
             ->heading(null)
             ->contentFooter(null);
     }
