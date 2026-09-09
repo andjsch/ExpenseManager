@@ -16,11 +16,11 @@ class ExpenseType extends Model
         return $this->hasMany(Bill::class);
     }
 
-    public function total(?int $month, int $year)
+    public function total(?int $month, ?int $year)
     {
         return $this->bills()
             ->when($month !== null, fn (Builder $query) => $query->whereMonth('date', '=', $month))
-            ->whereYear('date', '=', $year)
+            ->when($year !== null, fn (Builder $query) => $query->whereYear('date', '=', $year))
             ->sum('amount');
     }
 }

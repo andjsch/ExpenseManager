@@ -35,6 +35,14 @@ class ExpenseTypesOverview extends TableWidget
     #[On('table-filter-updated')]
     public function updatedFilters(array $data): void
     {
+        if ($data['date']['month'] === '') {
+            $data['date']['month'] = null;
+        }
+
+        if ($data['date']['year'] === '') {
+            $data['date']['year'] = null;
+        }
+
         $this->tableFilters = $data;
     }
 }
