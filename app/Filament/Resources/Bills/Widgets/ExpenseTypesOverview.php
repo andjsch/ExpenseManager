@@ -5,19 +5,21 @@ namespace App\Filament\Resources\Bills\Widgets;
 use App\Models\ExpenseType;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\On;
 
 class ExpenseTypesOverview extends TableWidget
 {
-    use InteractsWithPageFilters;
-
     public function table(Table $table): Table
     {
         return $table
-            ->query(fn (): Builder => ExpenseType::query())
+            ->query(function (): Builder {
+                return ExpenseType::query()
+                    ->when($this->tableFilters['expense_type_id']['value'] !== null,
+                        fn (Builder $query) => $query->where('id', $this->tableFilters['expense_type_id']['value'])
+                    );
+            })
             ->columns([
                 TextColumn::make('name'),
                 TextColumn::make('total')
@@ -35,13 +37,10 @@ class ExpenseTypesOverview extends TableWidget
     #[On('table-filter-updated')]
     public function updatedFilters(array $data): void
     {
-        if ($data['date']['month'] === '') {
-            $data['date']['month'] = null;
-        }
-
-        if ($data['date']['year'] === '') {
-            $data['date']['year'] = null;
-        }
+        // convert empty strings to null values
+        $data = collect($data)->dot()->map(function ($data) {
+            return $data === '' ? null : $data;
+        })->undot()->toArray();
 
         $this->tableFilters = $data;
     }
