@@ -1,0 +1,15 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+@layer components {
+    /* .row-py-sm class for table record rows */
+    :is(.fi-ta-row) {
+        &.row-py-sm {
+            :is(div.fi-ta-col > div) {
+                padding-block: --spacing(2) !important;
+            }
+        }
+    }
+}

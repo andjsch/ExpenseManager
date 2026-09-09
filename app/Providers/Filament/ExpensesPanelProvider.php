@@ -34,6 +34,7 @@ class ExpensesPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Teal,
             ])
+            ->viteTheme('resources/css/filament/expenses/theme.css')
             ->brandLogo(asset('resources/logo.svg'))
             ->darkModeBrandLogo(asset('resources/logo_dark.svg'))
             ->brandLogoHeight('2rem')
