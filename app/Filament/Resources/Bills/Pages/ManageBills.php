@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Bills\Pages;
 
 use App\Filament\Resources\Bills\BillResource;
 use App\Filament\Resources\Bills\Widgets\ExpenseTypesOverview;
+use App\Filament\Resources\Bills\Widgets\TotalOverview;
 use Filament\Actions\CreateAction;
 use Filament\Pages\Concerns\ExposesTableToWidgets;
 use Filament\Resources\Pages\ManageRecords;
@@ -26,6 +27,12 @@ class ManageBills extends ManageRecords
         ];
     }
 
+    public function getSidebarWidgets(): array {
+        return [
+            ExpenseTypesOverview::class,
+        ];
+    }
+
     public function updatedTableFilters(): void
     {
         $this->dispatch('table-filter-updated', $this->tableFilters);
@@ -41,17 +48,19 @@ class ManageBills extends ManageRecords
             ])
             ->components([
                 Grid::make(1)
-                    ->schema(function (): array {
-                        if (! isset($this->cachedSidebarWidgetsSchemaComponents)) {
-                            $this->cachedSidebarWidgetsSchemaComponents = $this->getWidgetsSchemaComponents([
-                                ExpenseTypesOverview::class,
-                            ]);
-                        }
-
-                        return $this->cachedSidebarWidgetsSchemaComponents;
-                    }),
+                    ->schema($this->getSidebarWidgetsConfiguration()),
                 EmbeddedTable::make()
                     ->columnSpan(['lg' => 2]),
             ]);
+    }
+
+    public function getSidebarWidgetsConfiguration(): array {
+        if (! isset($this->cachedSidebarWidgetsSchemaComponents)) {
+            $this->cachedSidebarWidgetsSchemaComponents = $this->getWidgetsSchemaComponents(
+                $this->getSidebarWidgets()
+            );
+        }
+
+        return $this->cachedSidebarWidgetsSchemaComponents;
     }
 }
