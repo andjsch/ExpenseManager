@@ -7,6 +7,9 @@ use App\Filament\Resources\Bills\Widgets\ExpenseTypesOverview;
 use Filament\Actions\CreateAction;
 use Filament\Pages\Concerns\ExposesTableToWidgets;
 use Filament\Resources\Pages\ManageRecords;
+use Filament\Schemas\Components\EmbeddedTable;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 
 class ManageBills extends ManageRecords
 {
@@ -14,12 +17,7 @@ class ManageBills extends ManageRecords
 
     protected static string $resource = BillResource::class;
 
-    protected function getHeaderWidgets(): array
-    {
-        return [
-            ExpenseTypesOverview::class,
-        ];
-    }
+    protected array $cachedSidebarWidgetsSchemaComponents;
 
     protected function getHeaderActions(): array
     {
@@ -31,5 +29,29 @@ class ManageBills extends ManageRecords
     public function updatedTableFilters(): void
     {
         $this->dispatch('table-filter-updated', $this->tableFilters);
+    }
+
+    public function content(Schema $schema): Schema
+    {
+        return $schema
+            ->columns([
+                'sm' => 1,
+                'md' => 2,
+                'lg' => 3,
+            ])
+            ->components([
+                Grid::make(1)
+                    ->schema(function (): array {
+                        if (! isset($this->cachedSidebarWidgetsSchemaComponents)) {
+                            $this->cachedSidebarWidgetsSchemaComponents = $this->getWidgetsSchemaComponents([
+                                ExpenseTypesOverview::class,
+                            ]);
+                        }
+
+                        return $this->cachedSidebarWidgetsSchemaComponents;
+                    }),
+                EmbeddedTable::make()
+                    ->columnSpan(['lg' => 2]),
+            ]);
     }
 }
