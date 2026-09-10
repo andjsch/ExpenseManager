@@ -34,8 +34,9 @@ class ManageBills extends ManageRecords
         ];
     }
 
-    public function updatedTableFilters(): void
+    protected function handleTableFilterUpdates(): void
     {
+        parent::handleTableFilterUpdates();
         $this->dispatch('table-filter-updated', $this->tableFilters);
     }
 
