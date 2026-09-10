@@ -60,7 +60,7 @@ class TotalOverview extends StatsOverviewWidget
             if ($month === 1 && $year !== null) {
                 $month = 12;
                 $year -= 1;
-            } elseif ($month !== 1 && $year !== null) {
+            } elseif ($month !== 1 && $month !== null && $year !== null) {
                 $month -= 1;
             } elseif ($month === null && $year !== null) {
                 $year -= 1;
