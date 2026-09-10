@@ -82,7 +82,7 @@ class BillResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn (Builder $query) => $query->orderByDesc('date'))
+            ->defaultSort(fn (Builder $query) => $query->orderByDesc('date'))
             ->recordTitleAttribute('description')
             ->columns([
                 TextColumn::make('description')
