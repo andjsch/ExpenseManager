@@ -29,6 +29,7 @@ class ManageBills extends ManageRecords
 
     public function getSidebarWidgets(): array {
         return [
+            TotalOverview::class,
             ExpenseTypesOverview::class,
         ];
     }
