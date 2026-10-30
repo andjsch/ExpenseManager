@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
@@ -26,5 +27,17 @@ class MigrateDatabaseToV2 extends Command
         Schema::table('bills', function (Blueprint $table) {
             $table->renameColumn('type', 'expense_type_id');
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('is_admin', false)->after('password');
+
+            $table->dropColumn([
+                'two_factor_secret',
+                'two_factor_recovery_codes',
+                'two_factor_confirmed_at'
+            ]);
+        });
+
+        User::first()->update(['is_admin' => true]);
     }
 }

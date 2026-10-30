@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('fname', 30);
             $table->string('lname', 30);
-            $table->string('username', 60)->unique();
+            $table->string('username', 20)->unique();
             $table->string('password');
+            $table->boolean('is_admin', false);
             $table->rememberToken();
             $table->timestamps();
         });
