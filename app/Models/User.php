@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,7 +17,6 @@ use Override;
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements FilamentUser, HasName
 {
-    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -34,6 +32,13 @@ class User extends Authenticatable implements FilamentUser, HasName
         ];
     }
 
+    public function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => "{$this->fname} {$this->lname}"
+        );
+    }
+
     #[Override]
     public function canAccessPanel(Panel $panel): bool
     {
@@ -43,6 +48,6 @@ class User extends Authenticatable implements FilamentUser, HasName
     #[Override]
     public function getFilamentName(): string
     {
-        return "{$this->fname} {$this->lname}";
+        return $this->name;
     }
 }
