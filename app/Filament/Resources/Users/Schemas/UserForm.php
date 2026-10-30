@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Users\Schemas;
 
+use App\Models\User;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -12,6 +13,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Component;
 
 class UserForm
 {
@@ -36,7 +38,9 @@ class UserForm
                     ->columns(2)
                     ->schema([
                         Toggle::make('is_admin')
-                            ->label(__('app.user_admin')),
+                            ->label(__('app.user_admin'))
+                            ->disabled(fn (User $record) => $record->is_admin && User::where('is_admin', true)->count() === 1)
+                            ->belowContent(fn (Toggle $component) => $component->isDisabled() ? __('app.user_admin_requirement') : null),
                         TextInput::make('password')
                             ->label(__('app.user_password'))
                             ->hint(__('app.user_password_leave_empty'))

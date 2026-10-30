@@ -28,6 +28,7 @@ return [
     'user_password_leave_empty'     => 'leer lassen für Nichtänderung',
     'user_password_confirmation'    => 'Passwort Bestätigung',
     'user_admin'                    => 'Admin',
+    'user_admin_requirement'        => 'Deaktiviert. Es muss mindestens ein Admin vorhanden sein',
 
     'navigation_settings'           => 'Einstellungen',
 

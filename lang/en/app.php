@@ -28,6 +28,7 @@ return [
     'user_password_leave_empty'     => 'leave empty for no change',
     'user_password_confirmation'    => 'Password confirmation',
     'user_admin'                    => 'Admin',
+    'user_admin_requirement'        => 'Disabled. There must be at least one admin.',
 
     'navigation_settings'           => 'Settings',
 
