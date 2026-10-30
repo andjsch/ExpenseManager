@@ -6,6 +6,7 @@ use Filament\Auth\Pages\Login as DefaultLogin;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
+use Illuminate\Validation\ValidationException;
 use Override;
 use SensitiveParameter;
 
@@ -39,5 +40,13 @@ class Login extends DefaultLogin
             'username' => $data['username'],
             'password' => $data['password'],
         ];
+    }
+
+    #[Override]
+    protected function throwFailureValidationException(): never
+    {
+        throw ValidationException::withMessages([
+            'data.username' => __('filament-panels::auth/pages/login.messages.failed'),
+        ]);
     }
 }
