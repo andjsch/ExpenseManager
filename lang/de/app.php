@@ -33,7 +33,7 @@ return [
     'ledger_name'                   => 'Name',
     'ledger_create'                 => 'Ausgabenbuch erstellen',
     'ledger_callout_heading'        => 'Was ist ein Ausgabenbuch?',
-    'ledger_callout_description'    => 'Ein Ausgabenbuch ist eine Mappe für Ihre Ausgaben: Es bündelt die Ausgaben und Ausgabenkategorien, die zusammengehören – dein Haushalt, eine WG oder ein Verein. Du kannst mehreren Ausgabebüchern angehören und jederzeit zwischen ihnen wechseln. Jedes Buch führt seine eigenen Ausgaben, und du kannst eines mit anderen Benutzern teilen, um Ausgaben gemeinsam zu erfassen.',
+    'ledger_callout_description'    => 'Ein Ausgabenbuch ist eine Mappe für Ihre Rechnungen: Es bündelt die Ausgaben und Ausgabenkategorien, die zusammengehören – dein Haushalt, eine WG oder ein Verein. Du kannst mehreren Ausgabebüchern angehören und jederzeit zwischen ihnen wechseln. Jedes Buch führt seine eigenen Ausgaben, und du kannst eines mit anderen Benutzern teilen, um Ausgaben gemeinsam zu erfassen.',
     'ledger_edit'                   => 'Ausgabenbuch bearbeiten',
     'ledger_edit_short'             => 'Bearbeiten',
     'ledger_delete_heading'         => '":name" löschen',
