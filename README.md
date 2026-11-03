@@ -6,10 +6,10 @@
 </p>
 
 ## Expense Manager
-The Expense Manager is a web application that should give you a simple way to track all of your expenses. Mostly every
-day we pay something in cash and don't see how much we actually spend on different sort of things. That's where Expense
-Manager comes in. Create new expense types and digitalize all your bills and expenses. Keep track of them and get to 
-know your cost of living.
+The Expense Manager is a progressive web application that allows you to track all of your expenses and categorise them.
+Pretty much every day we pay something and don't see how all the expenses pile up. That's where Expense Manager comes in.
+Create new expense types and digitalize all your bills and expenses. Keep track of them and get to know your cost of living.
+Create a ledger for yourself or another one that you share with your partner. Keep track and see the stats.
 
 
 ## Installation
@@ -17,13 +17,10 @@ know your cost of living.
 2. Rename `.env.example` to `.env`
 3. In the `.env` file, take all the necessary customizations
     - Your language code (currently supported is `en` and `de`)
-    - Currency
-    - Decimal point and thousand separator
-    - Date format
-    - Database connection strings
-4. Run the command `php artisan setup:expensemanager` to create all tables and set up the default user
+    - Database connection strings, only if you don't want to use SQLite
+4. Run the command `php artisan setup` to create all tables
 5. Point the webserver to the `public` folder 
-6. Log in with the user `admin` and the password `12345678` and start using Expense Manager 
+6. Create your first user (admin user), your first ledger and start using Expense Manager 
 
 
 ## Contributing
@@ -34,10 +31,6 @@ And if you want to contribute to the translation or add an entirely new one, ver
 
 ### Ideas that are already on the To-Do list
 - Add a picture or a PDF of the bill/invoice
-- Search functionality and filtering
-- Drop Bootstrap CSS and use Tailwind (maybe, if there is time)
-- Updater
-
 
 ## License
 Expense Manager is open-sourced software, built with Laravel, licensed under the [MIT license](https://opensource.org/licenses/MIT).
