@@ -10,6 +10,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Facades\Filament;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -20,6 +21,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Components\Text;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\IconPosition;
+use Filament\Support\Facades\FilamentTimezone;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -29,6 +31,7 @@ use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 
 class BillResource extends Resource
 {
@@ -97,11 +100,11 @@ class BillResource extends Resource
                     ->sortable(),
                 TextColumn::make('amount')
                     ->label(__('app.expense_amount'))
-                    ->money('EUR')
+                    ->money(Filament::getTenant()->currency)
                     ->sortable(),
                 TextColumn::make('date')
                     ->label(__('app.expense_date'))
-                    ->date()
+                    ->date(format: Filament::getTenant()->date_format)
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -153,7 +156,8 @@ class BillResource extends Resource
             ->deferFilters(false)
             ->recordActions([
                 EditAction::make()->hiddenLabel(true),
-                DeleteAction::make()->hiddenLabel(true),
+                DeleteAction::make()->hiddenLabel(true)
+                    ->modalDescription(fn (Bill $record) => __('app.expense_delete_description', ['date' => Carbon::parse($record->date)->format(Filament::getTenant()->date_format)])),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
