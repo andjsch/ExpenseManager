@@ -5,9 +5,9 @@ return [
     'expense_overview'              => 'Übersicht',
     'expense_total'                 => 'Gesamt',
     'expense_search'                => 'Suche',
-    'expense_types'                 => 'Ausgabe-Typen',
-    'expense_type'                  => 'Ausgabe-Typ',
-    'expense_type_short'            => 'Typ',
+    'expense_types'                 => 'Ausgabenkategorien',
+    'expense_type'                  => 'Ausgabekategorie',
+    'expense_type_short'            => 'Kategorie',
     'expense_description'           => 'Beschreibung',
     'expense_date'                  => 'Datum',
     'expense_amount'                => 'Betrag',
@@ -29,6 +29,15 @@ return [
     'user_password_confirmation'    => 'Passwort Bestätigung',
     'user_admin'                    => 'Admin',
     'user_admin_requirement'        => 'Deaktiviert. Es muss mindestens ein Admin vorhanden sein',
+
+    'ledger_name'                   => 'Name',
+    'ledger_create'                 => 'Ausgabenbuch erstellen',
+    'ledger_callout_heading'        => 'Was ist ein Ausgabenbuch?',
+    'ledger_callout_description'    => 'Ein Ausgabenbuch ist eine Mappe für Ihre Ausgaben: Es bündelt die Ausgaben und Ausgabenkategorien, die zusammengehören – dein Haushalt, eine WG oder ein Verein. Du kannst mehreren Ausgabebüchern angehören und jederzeit zwischen ihnen wechseln. Jedes Buch führt seine eigenen Ausgaben, und du kannst eines mit anderen Benutzern teilen, um Ausgaben gemeinsam zu erfassen.',
+    'ledger_edit'                   => 'Ausgabenbuch bearbeiten',
+    'ledger_edit_short'             => 'Bearbeiten',
+    'ledger_delete_heading'         => '":name" löschen',
+    'ledger_delete_description'     => 'Wenn du das Ausgabenbuch löscht, werden alle Ausgaben & Augabenkategorien unwiderruflich gelöscht. Bist du sicher?',
 
     'navigation_settings'           => 'Einstellungen',
 

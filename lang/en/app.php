@@ -30,6 +30,14 @@ return [
     'user_admin'                    => 'Admin',
     'user_admin_requirement'        => 'Disabled. There must be at least one admin.',
 
+    'ledger_name'                   => 'Name',
+    'ledger_create'                 => 'Create ledger',
+    'ledger_callout_heading'        => 'What is a ledger?',
+    'ledger_callout_description'    => 'A ledger is a folder for your expenses: it groups the expense types and expenses that belong together — your household, a shared flat, or a club. You can belong to several ledgers and switch between them at any time. Each ledger keeps its own expenses, and you can share one with other users to track spending together.',
+    'ledger_edit'                   => 'Edit ledger',
+    'ledger_delete_heading'         => 'Delete ":name"',
+    'ledger_delete_description'     => 'All expenses and expense types will be deleted permanently. Are you sure?',
+
     'navigation_settings'           => 'Settings',
 
     'installer_exp_type_general'    => 'General',

@@ -18,6 +18,11 @@ class Bill extends Model
         ];
     }
 
+    public function ledger(): BelongsTo
+    {
+        return $this->belongsTo(Ledger::class);
+    }
+
     public function expenseType(): BelongsTo
     {
         return $this->belongsTo(ExpenseType::class);

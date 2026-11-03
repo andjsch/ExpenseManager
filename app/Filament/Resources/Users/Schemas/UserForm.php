@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources\Users\Schemas;
 
+use App\Models\Ledger;
 use App\Models\User;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -39,8 +41,17 @@ class UserForm
                     ->schema([
                         Toggle::make('is_admin')
                             ->label(__('app.user_admin'))
-                            ->disabled(fn (User $record) => $record->is_admin && User::where('is_admin', true)->count() === 1)
+                            ->inline(false)
+                            ->disabled(fn (?User $record) => $record?->is_admin && User::where('is_admin', true)->count() === 1)
                             ->belowContent(fn (Toggle $component) => $component->isDisabled() ? __('app.user_admin_requirement') : null),
+                        Select::make('ledgers')
+                            ->relationship('ledgers',  titleAttribute: 'name')
+                            ->preload()
+                            ->multiple()
+                            ->createOptionForm([
+                                TextInput::make('name')
+                                    ->required(),
+                            ]),
                         TextInput::make('password')
                             ->label(__('app.user_password'))
                             ->hint(__('app.user_password_leave_empty'))
