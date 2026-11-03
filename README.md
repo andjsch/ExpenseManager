@@ -20,7 +20,13 @@ Create a ledger for yourself or another one that you share with your partner. Ke
     - Database connection strings, only if you don't want to use SQLite
 4. Run the command `php artisan setup` to create all tables
 5. Point the webserver to the `public` folder 
-6. Create your first user (admin user), your first ledger and start using Expense Manager 
+6. Create your first user (admin user), your first ledger and start using Expense Manager
+
+## Upgrade from Version 1
+1. Download the newest version from Github or use Git
+2. Run `composer install` in order to install all the necessary dependencies
+3. Optionally sync your `.env` file with `.env.example`. Important: keep your `APP_KEY` and DB settings
+4. Run the command `php artisan migrate:db-to-v2` to create all tables
 
 
 ## Contributing
