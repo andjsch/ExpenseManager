@@ -12,10 +12,7 @@ return [
     'expense_date'                  => 'Datum',
     'expense_amount'                => 'Betrag',
     'expense_guarantee'             => 'Garantie',
-    'expense_deletion_text'         => 'Möchten Sie die Ausgabe vom :exp wirklich löschen?',
-    'expense_info_created'          => 'Die Ausgabe vom :date (:desc) wurde erfolgreich erstellt.',
-    'expense_info_updated'          => 'Die Ausgabe vom :date (:desc) wurde erfolgreich aktualisiert.',
-    'expense_info_deleted'          => 'Die Ausgabe vom :date (:desc) wurde erfolgreich entfernt.',
+    'expense_delete_description'    => 'Möchten Sie die Ausgabe vom :date wirklich löschen?',
     'type_delete_constraint_error'  => 'Der Ausgabetyp kann nicht gelöscht werden, da er in Benutzung ist.',
 
     'users'                         => 'Benutzer',
@@ -31,6 +28,8 @@ return [
     'user_admin_requirement'        => 'Deaktiviert. Es muss mindestens ein Admin vorhanden sein',
 
     'ledger_name'                   => 'Name',
+    'ledger_currency'               => 'Währung',
+    'ledger_date_format'            => 'Datumsformat',
     'ledger_create'                 => 'Ausgabenbuch erstellen',
     'ledger_callout_heading'        => 'Was ist ein Ausgabenbuch?',
     'ledger_callout_description'    => 'Ein Ausgabenbuch ist eine Mappe für Ihre Rechnungen: Es bündelt die Ausgaben und Ausgabenkategorien, die zusammengehören – dein Haushalt, eine WG oder ein Verein. Du kannst mehreren Ausgabebüchern angehören und jederzeit zwischen ihnen wechseln. Jedes Buch führt seine eigenen Ausgaben, und du kannst eines mit anderen Benutzern teilen, um Ausgaben gemeinsam zu erfassen.',

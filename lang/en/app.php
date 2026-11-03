@@ -12,10 +12,7 @@ return [
     'expense_date'                  => 'Date',
     'expense_amount'                => 'Amount',
     'expense_guarantee'             => 'Guarantee',
-    'expense_deletion_text'         => 'Would you really like to delete the expense from :exp?',
-    'expense_info_created'          => 'The expense from :date (:desc) has been created succesfully.',
-    'expense_info_updated'          => 'The expense from :date (:desc) has been updated succesfully.',
-    'expense_info_deleted'          => 'The expense from :date (:desc) has been deleted succesfully.',
+    'expense_delete_description'    => 'Would you really like to delete the expense from :date?',
     'type_delete_constraint_error'  => 'The type cannot be deleted because it is in use.',
 
     'users'                         => 'Users',
@@ -31,6 +28,8 @@ return [
     'user_admin_requirement'        => 'Disabled. There must be at least one admin.',
 
     'ledger_name'                   => 'Name',
+    'ledger_currency'               => 'Currency',
+    'ledger_date_format'            => 'Date format',
     'ledger_create'                 => 'Create ledger',
     'ledger_callout_heading'        => 'What is a ledger?',
     'ledger_callout_description'    => 'A ledger is a folder for your bills: it groups the expense types and expenses that belong together — your household, a shared flat, or a club. You can belong to several ledgers and switch between them at any time. Each ledger keeps its own expenses, and you can share one with other users to track spending together.',
