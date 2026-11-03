@@ -74,7 +74,7 @@ class ExpensesPanelProvider extends PanelProvider
     {
         FilamentView::registerRenderHook(
             PanelsRenderHook::HEAD_START,
-            fn(): string => Blade::render('<link rel="manifest" href="{{ route(\'manifest\') }}">'),
+            fn(): string => view('filament_head_inject'),
         );
     }
 }
