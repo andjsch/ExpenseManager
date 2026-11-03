@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Attributes\Guarded;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Guarded]
+#[Guarded([])]
 class Bill extends Model
 {
     protected function casts(): array {
