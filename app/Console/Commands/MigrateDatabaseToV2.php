@@ -51,6 +51,8 @@ class MigrateDatabaseToV2 extends Command
             $table->unsignedBigInteger('ledger_id')->after('id')->default($ledger->id);
 
             $table->foreign('ledger_id')->references('id')->on('ledgers')->cascadeOnDelete();
+
+            $table->dropIndex('expense_types_name_unique');
             $table->unique(['name', 'ledger_id']);
         });
 

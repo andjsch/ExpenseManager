@@ -29,6 +29,8 @@ return new class extends Migration
             $table->unsignedBigInteger('ledger_id')->after('id');
 
             $table->foreign('ledger_id')->references('id')->on('ledgers')->cascadeOnDelete();
+
+            $table->dropIndex('expense_types_name_unique');
             $table->unique(['name', 'ledger_id']);
         });
     }
