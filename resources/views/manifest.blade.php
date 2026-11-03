@@ -1,7 +1,7 @@
 {
   "name": "{{ config('app.name') }}",
   "display": "standalone",
-  "theme_color": "#00bba7",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "{{ asset('/resources/favicon.png') }}",

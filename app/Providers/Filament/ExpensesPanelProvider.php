@@ -22,6 +22,7 @@ use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class ExpensesPanelProvider extends PanelProvider
@@ -73,7 +74,7 @@ class ExpensesPanelProvider extends PanelProvider
     {
         FilamentView::registerRenderHook(
             PanelsRenderHook::HEAD_START,
-            fn(): string => '<link rel="manifest" href="/manifest.json">',
+            fn(): string => Blade::render('<link rel="manifest" href="{{ route(\'manifest\') }}">'),
         );
     }
 }
