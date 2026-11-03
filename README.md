@@ -26,7 +26,7 @@ Create a ledger for yourself or another one that you share with your partner. Ke
 1. Download the newest version from Github or use Git
 2. Run `composer install` in order to install all the necessary dependencies
 3. Optionally sync your `.env` file with `.env.example`. Important: keep your `APP_KEY` and DB settings
-4. Run the command `php artisan migrate:db-to-v2` to create all tables
+4. Run the command `php artisan migrate:db-to-v2` to migrate your existing installation
 
 
 ## Contributing
