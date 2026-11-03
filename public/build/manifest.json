@@ -1,0 +1,11 @@
+{
+  "resources/css/filament/expenses/theme.css": {
+    "file": "assets/theme-Du3LMcy3.css",
+    "name": "theme",
+    "names": [
+      "theme.css"
+    ],
+    "src": "resources/css/filament/expenses/theme.css",
+    "isEntry": true
+  }
+}
