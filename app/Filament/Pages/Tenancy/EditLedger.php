@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages\Tenancy;
 
+use App\Filament\Forms\Components\CurrencySelect;
 use App\Models\Ledger;
 use Filament\Actions\DeleteAction;
 use Filament\Forms\Components\TextInput;
@@ -18,9 +19,16 @@ class EditLedger extends EditTenantProfile
     public function form(Schema $schema): Schema
     {
         return $schema
+            ->columns(3)
             ->components([
                 TextInput::make('name')
                     ->label(__('app.ledger_name'))
+                    ->required(),
+                CurrencySelect::make('currency')
+                    ->label(__('app.ledger_currency'))
+                    ->required(),
+                TextInput::make('date_format')
+                    ->label(__('app.ledger_date_format'))
                     ->required(),
             ]);
     }

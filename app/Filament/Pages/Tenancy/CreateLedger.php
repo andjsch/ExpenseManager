@@ -2,11 +2,13 @@
 
 namespace App\Filament\Pages\Tenancy;
 
+use App\Filament\Forms\Components\CurrencySelect;
 use App\Models\ExpenseType;
 use App\Models\Ledger;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Tenancy\RegisterTenant;
 use Filament\Schemas\Components\Callout;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
 
 class CreateLedger extends RegisterTenant
@@ -26,6 +28,17 @@ class CreateLedger extends RegisterTenant
                 TextInput::make('name')
                     ->label(__('app.ledger_name'))
                     ->required(),
+                Grid::make()
+                    ->schema([
+                        CurrencySelect::make('currency')
+                            ->label(__('app.ledger_currency'))
+                            ->default('EUR')
+                            ->required(),
+                        TextInput::make('date_format')
+                            ->label(__('app.ledger_date_format'))
+                            ->default('Y-m-d')
+                            ->required(),
+                    ])
             ]);
     }
 

@@ -38,7 +38,7 @@ class MigrateDatabaseToV2 extends Command
 
         Artisan::call('migrate --force');
 
-        $ledger = Ledger::create(['name' => 'Default']);
+        $ledger = Ledger::create(['name' => 'Default', 'currency' => 'EUR', 'date_format' => 'Y-m-d']);
         User::all()->each(fn (User $u) => $u->ledgers()->sync([$ledger->id]));
 
         Schema::table('bills', function(Blueprint $table) use($ledger) {
