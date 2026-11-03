@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\EditProfile;
 use App\Filament\Pages\Auth\Login;
+use App\Filament\Pages\Auth\RegisterFirstUser;
 use App\Filament\Pages\Tenancy\CreateLedger;
 use App\Filament\Pages\Tenancy\EditLedger;
 use App\Models\Ledger;
@@ -35,6 +36,7 @@ class ExpensesPanelProvider extends PanelProvider
             ->path('')
             ->login(Login::class)
             ->profile(EditProfile::class)
+            ->registration(RegisterFirstUser::class)
             ->colors([
                 'primary' => Color::Teal,
             ])
